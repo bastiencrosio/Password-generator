@@ -1,12 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
 body {
-  height: 100vh;
-  background: radial-gradient(ellipse, rgb(137, 21, 126), rgb(37, 6, 43));
+  --clr1: rgb(27, 4, 32);
+  --clr2: rgb(82, 12, 75);
+
+  min-height: 100vh;
+  background: linear-gradient(var(--clr1) 30%, var(--clr2));
   filter: brightness(10px);
   display: grid;
   align-items: center;
   justify-items: center;
+
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: rgb(222, 136, 214);
 }
 
-*{
-  border: 1px solid red;
+#generator {
+--height: 80svh;
+
+  position: relative;
+  height: var(--height);
+  aspect-ratio: 3/4;
+  padding: 1rem;
+
+  border-radius: 20px;
+  background-color: rgba(27, 4, 32, 0.8);
+  box-shadow: 0 15px 25px rgba(0,0,0,.7);
+}
+
+#generator::before {
+  content: "";
+  width: 102%;
+  height: 102%;
+  inset: -1%;
+  border-radius: inherit;
+  background-image: linear-gradient(
+    var(--rotate)
+    , rgb(44, 6, 52), var(--clr2) 43%, #4e00c2);
+  position: absolute;
+  z-index: -1;
+  animation: spin 4s linear infinite;
+}
+
+#generator::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--height) / 6));
+  background-image: linear-gradient(
+    var(--rotate)
+    , rgb(27, 4, 32), var(--clr2) 43%, #4e00c2);
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  @keyframes spin {
+    100% {
+      --rotate: 360deg;
+    }
+  }
 }

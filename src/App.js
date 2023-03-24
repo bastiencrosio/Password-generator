@@ -81,8 +81,8 @@ function App() {
 
   return (
     <>
-      <div>
-        <h1>Password generator</h1>
+      <div id='generator'>
+        <h1>The custom password generator</h1>
         <p>Choose your parameters:</p>
         <form onSubmit={handleSubmit}>
           <div>
