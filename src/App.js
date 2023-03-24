@@ -131,7 +131,7 @@ function App() {
             </label>
           </div>
           <label>
-              length: {formValues.length}
+              Password length: {formValues.length}
               <input
                 type="range"
                 name="length"
@@ -141,7 +141,7 @@ function App() {
                 onChange={(e) => handleChange(e)}
               />
             </label>
-          <button type="submit">Generate</button>
+          <button type="submit">Generate a Password</button>
           <div>
             <input 
               type="text"

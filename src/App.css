@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
 @property --rotate {
   syntax: "<angle>";
-  initial-value: 132deg;
+  initial-value: 0deg;
   inherits: false;
 }
 
 body {
-  --clr1: rgb(27, 4, 32);
-  --clr2: rgb(82, 12, 75);
+  --clr1: 4, 12, 32;
+  --clr2: 26, 18, 49;
+  --test: rgb(26, 18, 49);
 
   min-height: 100vh;
-  background: linear-gradient(var(--clr1) 30%, var(--clr2));
+  background: linear-gradient(rgb(var(--clr1)) 30%, rgb(var(--clr2)));
   filter: brightness(10px);
   display: grid;
   align-items: center;
@@ -19,7 +20,7 @@ body {
   font-family: 'Karla', sans-serif;
   font-weight: 400;
   font-size: 1rem;
-  color: rgb(222, 136, 214);
+  color: rgb(165, 167, 218);
 }
 
 #generator {
@@ -31,39 +32,37 @@ body {
   padding: 1rem;
 
   border-radius: 20px;
-  background-color: rgba(27, 4, 32, 0.8);
+  background: linear-gradient(rgb(var(--clr2)), rgb(var(--clr1), 90%));
   box-shadow: 0 15px 25px rgba(0,0,0,.7);
 }
 
 #generator::before {
   content: "";
-  width: 102%;
-  height: 102%;
-  inset: -1%;
+  width: 101%;
+  height: 101%;
+  inset: -0.5%;
   border-radius: inherit;
   background-image: linear-gradient(
     var(--rotate)
-    , rgb(44, 6, 52), var(--clr2) 43%, #4e00c2);
+    , rgb(var(--clr1)), rgb(var(--clr2)) 43%, #2f1f7e);
   position: absolute;
   z-index: -1;
   animation: spin 4s linear infinite;
 }
 
 #generator::after {
+  --size: 70%;
+
   position: absolute;
   content: "";
-  top: calc(var(--height) / 6);
-  left: 0;
-  right: 0;
+  inset: calc((100% - var(--size)) / 2);
   z-index: -1;
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  transform: scale(0.8);
+  height: var(--size);
+  width: var(--size);
   filter: blur(calc(var(--height) / 6));
   background-image: linear-gradient(
-    var(--rotate)
-    , rgb(27, 4, 32), var(--clr2) 43%, #4e00c2);
+    var(--rotate),
+    rgb(var(--clr1)), rgb(var(--clr2)) 43%, #2f1f7e);
   animation: spin 4s linear infinite;
 }
 
@@ -78,8 +77,11 @@ body {
 
 @media (prefers-reduced-motion) {
   @keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
     100% {
-      --rotate: 360deg;
+      --rotate: 0deg;
     }
   }
 }
