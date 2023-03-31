@@ -85,7 +85,7 @@ function App() {
         <h1>The custom password generator</h1>
         <p>Choose your parameters:</p>
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className='checkboxes-wrapper'>
             <label>
               <input
                 type="checkbox"
@@ -130,7 +130,7 @@ function App() {
               symbols
             </label>
           </div>
-          <label>
+          <label className='length-selector'>
               Password length: {formValues.length}
               <input
                 type="range"
@@ -142,8 +142,8 @@ function App() {
               />
             </label>
           <button type="submit">Generate a Password</button>
-          <div>
-            <input 
+          <div id='password-area'>
+            <input id='password-display'
               type="text"
               placeholder='Password' 
               value={outputPassword ? outputPassword : ''} 
