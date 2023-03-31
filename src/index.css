@@ -9,3 +9,19 @@
   font-weight: 400;
   color: rgb(var(--clr-text));
 }
+
+@media (max-width: 400px){
+  html {
+    font-size: 14px;
+  }
+}
+@media (max-width: 350px){
+  html {
+    font-size: 13px;
+  }
+}
+@media (max-width: 300px){
+  html {
+    font-size: 12px;
+  }
+}

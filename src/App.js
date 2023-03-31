@@ -83,7 +83,7 @@ function App() {
     <>
       <div id='generator'>
         <h1>The custom password generator</h1>
-        <p>Choose your parameters:</p>
+        <h3>Choose your parameters:</h3>
         <form onSubmit={handleSubmit}>
           <div className='checkboxes-wrapper'>
             <label>

@@ -4,14 +4,14 @@
   inherits: false;
 }
 
-body {
+html {
   --clr1: 4, 12, 32;
   --clr2: 26, 18, 49;
   --clr-text: 193, 195, 255;
 
   min-height: 100vh;
   background: linear-gradient(315deg, rgb(var(--clr1)) 30%, rgb(var(--clr2)));
-  filter: brightness(10px);
+  background-repeat: no-repeat;
   display: grid;
   align-items: center;
   justify-items: center;
@@ -100,11 +100,12 @@ justify-items: center;
 
 form {
   display: grid;
-  grid-auto-rows: 4fr 1fr 1fr 2fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4fr 1fr 1fr 2fr;
   justify-content: center;
   gap: 1rem;
   
-  width: 80%;
+  width: 95%;
 }
 
 form+div {
@@ -123,27 +124,27 @@ h1 {
   border-bottom: 1px radial-gradi;
 }
 
-div > p {
+div > h3 {
   position: relative;
 }
 
-div > p::before {
+div > h3::before {
   content: '';
   position: absolute;
-  inset: -100% -30%;
+  inset: -100% -25%;
 
   height: 1px;
-  width: 18rem;
+  width: 150%;
   background: linear-gradient(90deg, transparent, rgb(255, 255, 255, .3), transparent);
 }
 
-div > p::after {
+div > h3::after {
   content: '';
   position: absolute;
-  inset: 200% -30%;
+  inset: 200% -25%;
 
   height: 1px;
-  width: 18rem;
+  width: 150%;
   background: linear-gradient(90deg, transparent, rgb(255, 255, 255, .3), transparent);
 }
 
@@ -153,13 +154,26 @@ div > p::after {
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr 1fr;
-  justify-items:center ;
+}
+
+label:has(input[type='checkbox']){
+  display: flex;
+  align-items: center;
 }
 
 @media (max-width: 450px) {
-  .checkboxes-wrapper{
+  .checkboxes-wrapper {
     grid-template-columns: 1fr;
   }
+  label:has(input[type='checkbox']) {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  h1 {
+    text-transform: none;
+  }
+
 }
 
 button, input[type='text'] {
@@ -178,14 +192,15 @@ button, input[type='text'] {
 }
 
 #password-area {
-  display: flex;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
 }
 
 #password-display {
   cursor: text;
   text-align: center;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.2rem, 2rem);
   border-radius: 6px 3px 3px 6px;
 }
 
